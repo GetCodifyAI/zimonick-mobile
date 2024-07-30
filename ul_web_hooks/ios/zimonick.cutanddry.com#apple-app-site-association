@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "246TQRHP2H.cutanddry.zimonick.mobile.ios",
+        "paths": [
+          "/userspublic/loginRedirect/*",
+          "/cashback*",
+          "/*order*",
+          "*invoice*",
+          "*chat*"
+        ]
+      }
+    ]
+  }
+}

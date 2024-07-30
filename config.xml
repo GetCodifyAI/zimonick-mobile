@@ -1,11 +1,101 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="cutanddry.zimonick.mobile" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="cutanddry.zimonick.mobile.ios" android-packageName="cutanddry.zimonick.mobile.android" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Zimonick</name>
-    <description>Sample Apache Cordova App</description>
-    <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
-        Apache Cordova Team
+    <description>Zimonick mobile application</description>
+     <author email="support@cutanddry.com">
+        Cut+Dry Team
     </author>
     <content src="index.html" />
+    <access origin="*" />
+    <access origin="about:*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-navigation href="about:*" />
+    <preference name="ScrollEnabled" value="true" />
+    <icon src="resources/zimonickAppIcon.png" />
+    <preference name="AndroidLaunchMode" value="singleInstance" />
+    <preference name="intercom-android-push-type" value="FCM"/>
+    <preference name="intercom-app-id" value="lxon3spp" />
+    <preference name="intercom-ios-api-key" value="ios_sdk-4c74b0f803fb085f0ad06250c050d9508962a059" />
+    <preference name="AndroidXEnabled" value="true" />
+    <platform name="android">
+        <allow-navigation href="https://zimonick.cutanddry.com/*" />
+        <allow-navigation href="https://staging-zimonick.cutanddry.com/*" />
+        <allow-navigation href="https://secure.safewebservices.com/*" />
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:usesCleartextTraffic="true" />
+        </edit-config>
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-feature android:name="android.hardware.camera" android:required="false" />
+        </config-file>
+    </platform>
+    <platform name="ios">
+        <preference name="ErrorUrl" value="index.html" />
+        <allow-navigation href="https://zimonick.cutanddry.com/*" />
+        <allow-navigation href="https://staging-zimonick.cutanddry.com/*" />
+        <allow-navigation href="gap://ready" />
+        <allow-navigation href="https://secure.safewebservices.com/*" />
+        <!-- <allow-navigation href="*.*.plaid.com/*" /> -->
+        <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
+            <string>We need camera access to take photos of invoices.</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
+            <string>We need photo library access to get photos of invoices.</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+            <string>need location access to find things nearby</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
+            <string>need photo library access to save pictures there</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="CFBundleDisplayName">
+            <string>Zimonick</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="IntercomUniversalLinkDomains">
+            <array>
+                <string>https://zimonick.cutanddry.com</string>
+            </array>
+            <array>
+                <string>https://staging-zimonick.cutanddry.com</string>
+            </array>
+        </edit-config>
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <icon height="57" src="resources/ios/icon/57.png" width="57" />
+        <icon height="114" src="resources/ios/icon/114.png" width="114" />
+        <icon height="40" src="resources/ios/icon/40.png" width="40" />
+        <icon height="80" src="resources/ios/icon/80.png" width="80" />
+        <icon height="120" src="resources/ios/icon/120.png" width="120" />
+        <icon height="50" src="resources/ios/icon/50.png" width="50" />
+        <icon height="100" src="resources/ios/icon/100.png" width="100" />
+        <icon height="60" src="resources/ios/icon/60.png" width="60" />
+        <icon height="120" src="resources/ios/icon/120.png" width="120" />
+        <icon height="180" src="resources/ios/icon/180.png" width="180" />
+        <icon height="72" src="resources/ios/icon/72.png" width="72" />
+        <icon height="144" src="resources/ios/icon/144.png" width="144" />
+        <icon height="76" src="resources/ios/icon/76.png" width="76" />
+        <icon height="152" src="resources/ios/icon/152.png" width="152" />
+        <icon height="167" src="resources/ios/icon/167.png" width="167" />
+        <icon height="29" src="resources/ios/icon/29.png" width="29" />
+        <icon height="58" src="resources/ios/icon/58.png" width="58" />
+        <icon height="87" src="resources/ios/icon/87.png" width="87" />
+        <icon height="1024" src="resources/ios/icon/1024.png" width="1024" />
+        <z height="2668" src="resources/splash.png" width="1500" />
+    </platform>
+    <universal-links>
+        <ios-team-id value="246TQRHP2H" />
+        <host event="launchedAppFromLink" name="zimonick.cutanddry.com" scheme="https" />
+        <host name="zimonick.cutanddry.com" scheme="https">
+            <path event="launchedAppFromLink" url="/userspublic/loginRedirect/*" />
+            <path event="launchedAppFromLink" url="/cashback*" />
+            <path event="launchedAppFromLink" url="/*order*" />
+            <path event="launchedAppFromLink" url="*invoice*" />
+            <path event="launchedAppFromLink" url="*chat*" />
+        </host>
+        <host event="launchedAppFromLink" name="cutanddry.app.link" scheme="https" />
+    </universal-links>
 </widget>
